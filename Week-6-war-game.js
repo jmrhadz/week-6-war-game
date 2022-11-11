@@ -1,3 +1,7 @@
+//code starts on line 370
+
+//comment the following console.log at lines 516, 518, 523, 530, 533, 545, 547 before running Test class, otherwise processer will bog down at high number of iterations
+
 const baseDeck = [
         {
           "value": 1,
@@ -509,23 +513,24 @@ class Game{
     play(){
       let winner;
       for(let i = 0;i< 26;i++){
-        //console.log(this.handsLeft, "hands remaining")
+        console.log(this.handsLeft, "hands remaining")       //remove the comments here to show hands remaining
         this.handsLeft--;
-       // console.log(`Player One: ${this.player1.deck[i].name}  vs Player Two: ${this.player2.deck[i].name}`)
+        console.log(`Player One: ${this.player1.deck[i].name}  vs Player Two: ${this.player2.deck[i].name}`)    //remove the comments here to show cards played
         //Player whose card is higher gets a point, ties = 0 points
         switch (true){
           case (this.player1.deck[i].value > this.player2.deck[i].value):
             this.player1.pointsWon++;
-            //console.log("player one wins the hand")
+            console.log("player one wins the hand")    ////remove the comments here to show player one wins the hand
             break;
           case (this.player1.deck[i].value < this.player2.deck[i].value):
             this.player2.pointsWon++;
-           // console.log("player two wins the hand")
+            console.log("player two wins the hand")   ////remove the comments here to show player two wins the hand
             break;
           default:
-            //console.log(`Tie: no points won`);
+            console.log(`Tie: no points won`);    ////remove the comments here to show tie round
         }
-        //console.log(`Player One: ${this.player1.pointsWon}, Player Two: ${this.player2.pointsWon}`);
+        console.log(`Player One: ${this.player1.pointsWon}, Player Two: ${this.player2.pointsWon}
+        `);   ////remove the comments here to show player points after each hand
       }
       switch (true){
         case (this.player1.pointsWon > this.player2.pointsWon):
@@ -537,9 +542,9 @@ class Game{
           this.winningPlayer = 2;
           break;
         default:
-          //console.log("Tie Game");
+          //console.log("Tie Game");       ////remove the comments here to show tie game
       }
-     //this.end(winner);
+     this.end(winner);                   ////remove the comments here to call the end method, which shows which player wins the game
      return this.winningPlayer;
     }
 
@@ -555,7 +560,10 @@ class Game{
 }
 }
 
+let game = new Game;
+game.start();
 
+/*          //remove comments here to test multiple iterations of the game and view results.  comment out all console.logs above to not bog down the processor
 class Test {
   constructor(numberOfGames){
     this.numberOfGames = numberOfGames;
@@ -587,3 +595,5 @@ class Test {
 
 let test = new Test(5);
 test.run();
+
+*/
